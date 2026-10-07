@@ -22,7 +22,8 @@ describe("📈📉🏎️ Prediction Markets Challenge", function () {
     return (await ethers.getContractFactory(contractArtifact)) as PredictionMarket__factory;
   }
 
-  before(async () => {
+  before(async function () {
+    this.timeout(200000);
     ({ ethers } = await network.create());
     [owner, oracle] = await ethers.getSigners();
     const predictionMarketFactory = await getPredictionMarketFactory();
